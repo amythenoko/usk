@@ -33,7 +33,7 @@ void __not_in_flash_func(zzz)() {
     vreg[0] = 1;    // lowest possible power
     *(uint32_t*)0x40024000 = 0x00d1e000; // disable xosc
     while(1) __asm volatile("wfi"); // optimized: use WFI to save more power}
-
+}
 void finish_pins_except_leds() {
     for(int pin = 0; pin <= 29; pin++) {
        if (pin == led_pin() || pin == pwr_pin())
