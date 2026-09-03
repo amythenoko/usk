@@ -24,7 +24,12 @@ bool write_payload();
 // overclock to 320 MHz
 void init_system() {
     vreg_set_voltage(VREG_VOLTAGE_1_30);
-	set_sys_clock_khz(320000, true);
+    set_sys_clock_pll(1280 * MHZ, 4, 1);
+    clock_configure(clk_peri,
+                    0,
+                    CLOCKS_CLK_PERI_CTRL_AUXSRC_VALUE_CLKSRC_PLL_SYS,
+                    320 * MHZ,
+                    320 * MHZ);
 }
 
 // filled within "fast check" on eMMC init
