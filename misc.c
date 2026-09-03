@@ -35,8 +35,8 @@ void __not_in_flash_func(zzz)() {
     while(1) __asm volatile("wfi"); // optimized: use WFI to save more power}
 
 void finish_pins_except_leds() {
-    for(int pin = 0; pin <= 29; pin += 1) {
-        if (pin == led_pin() || pin == pwr_pin())
+    for(int pin = 0; pin <= 29; pin++) {
+       if (pin == led_pin() || pin == pwr_pin())
             continue;
         if (pin == PIN_GLI_PICO || pin == PIN_GLI_XIAO || pin == PIN_GLI_WS || pin == PIN_GLI_ITSY)
         {
